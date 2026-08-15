@@ -105,21 +105,6 @@
             z-index: 1;
         }
 
-        .hero-text-box {
-            position: relative;
-            z-index: 2;
-            background: transparent;
-            border: 1px solid var(--border-color); /* 加入細長方形框框 */
-            padding: 3rem 5rem;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 300;
-            letter-spacing: 10px;
-        }
-
         /* 利用 CSS Grid 與背景色實作「細黑線分割」的完美格線 */
         .grid-container {
             display: grid;
@@ -289,7 +274,6 @@
             .video-item.main { grid-column: span 1; grid-row: span 1; }
             .cv-container { grid-template-columns: 1fr; gap: 2rem; }
             .nav-links { display: none; }
-            .hero-title { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -306,16 +290,12 @@
         </div>
     </nav>
 
-    <!-- Hero 大圖 / 無聲影片 -->
+    <!-- Hero 大圖 / 無聲影片 (移除文字方塊) -->
     <header class="hero">
-        <video autoplay loop muted playsinline>
+        <video autoplay loop muted playsinline webkit-playsinline>
             <source src="head.mp4" type="video/quicktime">
             <source src="head.mp4" type="video/mp4">
         </video>
-        <div class="hero-text-box">
-            <h1 class="hero-title">林鼎強</h1>
-            <p style="letter-spacing: 4px; margin-top: 10px;">歌手｜演員</p>
-        </div>
     </header>
 
     <!-- 1. Discography 區塊 -->
@@ -324,7 +304,7 @@
         <div class="grid-container discography-grid">
             
             <a href="https://ffm.to/canyoufeelthelovetonight" class="disco-item" target="_blank">
-                <img src="AL1.jpg" alt="Album Cover 1">
+                <img src="AL1.webp" alt="Album Cover 1">
                 <div class="disco-overlay">
                     <h4>Can You Feel the Love Tonight (Live)</h4>
                     <p>Listen Now ↗</p>
@@ -332,7 +312,7 @@
             </a>
             
             <a href="https://ffm.to/doiloveyou" class="disco-item" target="_blank">
-                <img src="AL2.jpg" alt="Album Cover 2">
+                <img src="AL2.webp" alt="Album Cover 2">
                 <div class="disco-overlay">
                     <h4>Do I Love You</h4>
                     <p>Listen Now ↗</p>
@@ -340,7 +320,7 @@
             </a>
             
             <a href="https://ffm.to/LightsMusicCarols" class="disco-item" target="_blank">
-                <img src="AL3.png" alt="Album Cover 3">
+                <img src="AL3.webp" alt="Album Cover 3">
                 <div class="disco-overlay">
                     <h4>Lights, Music, Carols!</h4>
                     <p>Listen Now ↗</p>
@@ -348,7 +328,7 @@
             </a>
             
             <a href="https://ffm.to/almost-like-being-in-love" class="disco-item" target="_blank">
-                <img src="AL4.png" alt="Album Cover 4">
+                <img src="AL4.webp" alt="Album Cover 4">
                 <div class="disco-overlay">
                     <h4>Almost Like Being in Love</h4>
                     <p>Listen Now ↗</p>
@@ -356,7 +336,7 @@
             </a>
             
             <a href="https://ffm.to/i-wish-you-love" class="disco-item" target="_blank">
-                <img src="AL5.jpg" alt="Album Cover 5">
+                <img src="AL5.webp" alt="Album Cover 5">
                 <div class="disco-overlay">
                     <h4>I Wish You Love (Studio Session)</h4>
                     <p>Listen Now ↗</p>
