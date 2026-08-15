@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林鼎強｜跨界歌手｜劇場演員｜</title>
+    <!-- 引入 Google 字體：Inter (現代極簡無襯線字體) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 基礎重置與變數設定 */
+        :root {
+            --border-color: #000000;
+            --bg-color: #ffffff;
+            --text-color: #000000;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', "PingFang TC", "Helvetica Neue", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* 導覽列 (Sticky 黏在頂部，帶黑線) */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* 共用標題樣式 */
+        .section-title {
+            padding: 2rem;
+            font-size: 2rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-color);
+        }
+
+        /* 首頁大圖/無聲影片區塊 */
+        .hero {
+            position: relative;
+            height: calc(100vh - 65px); /* 扣除導覽列高度 */
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            z-index: 1;
+        }
+
+        /* 利用 CSS Grid 與背景色實作「細黑線分割」的完美格線 */
+        .grid-container {
+            display: grid;
+            gap: 1px; /* 這裡的 1px gap 搭配黑色背景，就會變成完美的黑框線 */
+            background-color: var(--border-color); 
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* 1. Discography (4欄網格) */
+        .discography-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .disco-item {
+            background-color: var(--bg-color);
+            aspect-ratio: 1 / 1;
+            position: relative;
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .disco-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 移除灰階濾鏡，讓圖片一開始就是彩色的 */
+            transition: transform 0.5s ease; /* 僅保留放大特效 */
+        }
+
+        .disco-item:hover img {
+            transform: scale(1.05); /* 滑鼠懸停時微微放大 */
+        }
+
+        .disco-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .disco-item:hover .disco-overlay {
+            transform: translateY(0);
+        }
+
+        /* 2. 演出區塊 (單欄) */
+        .performances-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .perf-col {
+            background-color: var(--bg-color);
+            padding: 3rem;
+        }
+
+        .perf-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .perf-list {
+            list-style: none;
+        }
+
+        .perf-list li {
+            padding: 1rem 0;
+            border-bottom: 1px dashed #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .perf-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* 3. 影片區塊 (3欄網格) */
+        .video-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .video-item {
+            background-color: var(--bg-color);
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
+
+        .video-item.main {
+            /* 主打影片：跨越 2 欄 2 列 */
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* YouTube iframe 的滿版設定 */
+        .video-item iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 4. CV 區塊 */
+        .cv-section {
+            background-color: var(--bg-color);
+            padding: 5rem 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cv-container {
+            max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+
+        .cv-photo {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+
+        .cv-text h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .cv-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: #333;
+        }
+
+        .cv-text h4 {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* 頁尾 */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* RWD 手機版設定 */
+        @media (max-width: 768px) {
+            .discography-grid { grid-template-columns: repeat(2, 1fr); }
+            .performances-grid { grid-template-columns: 1fr; }
+            .video-grid { grid-template-columns: 1fr; }
+            .video-item.main { grid-column: span 1; grid-row: span 1; }
+            .cv-container { grid-template-columns: 1fr; gap: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <nav>
+        <div class="logo">林鼎強｜跨界歌手｜劇場演員｜</div>
+        <div class="nav-links">
+            <a href="#discography">Discography</a>
+            <a href="#performances">Performances</a>
+            <a href="#videos">Videos</a>
+            <a href="#cv">CV</a>
+        </div>
+    </nav>
+
+    <!-- Hero 大圖 / 無聲影片 (移除文字方塊) -->
+<header class="hero">
+    <!-- 加入 preload="auto" 並確保順序：mp4 在前，或分開不同副檔名 -->
+    <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="hero-fallback.jpg">
+        <source src="head.mp4" type="video/mp4">
+    </video>
+</header>
+
+    <!-- 1. Discography 區塊 -->
+    <section id="discography">
+        <h2 class="section-title">01 / Discography</h2>
+        <div class="grid-container discography-grid">
+            
+            <a href="https://ffm.to/canyoufeelthelovetonight" class="disco-item" target="_blank">
+                <img src="AL1.webp" alt="Album Cover 1">
+                <div class="disco-overlay">
+                    <h4>Can You Feel the Love Tonight (Live)</h4>
+                    <p>Listen Now ↗</p>
+                </div>
+            </a>
+            
+            <a href="https://ffm.to/doiloveyou" class="disco-item" target="_blank">
+                <img src="AL2.webp" alt="Album Cover 2">
+                <div class="disco-overlay">
+                    <h4>Do I Love You</h4>
+                    <p>Listen Now ↗</p>
+                </div>
+            </a>
+            
+            <a href="https://ffm.to/LightsMusicCarols" class="disco-item" target="_blank">
+                <img src="AL3.webp" alt="Album Cover 3">
+                <div class="disco-overlay">
+                    <h4>Lights, Music, Carols!</h4>
+                    <p>Listen Now ↗</p>
+                </div>
+            </a>
+            
+            <a href="https://ffm.to/almost-like-being-in-love" class="disco-item" target="_blank">
+                <img src="AL4.webp" alt="Album Cover 4">
+                <div class="disco-overlay">
+                    <h4>Almost Like Being in Love</h4>
+                    <p>Listen Now ↗</p>
+                </div>
+            </a>
+            
+            <a href="https://ffm.to/i-wish-you-love" class="disco-item" target="_blank">
+                <img src="AL5.webp" alt="Album Cover 5">
+                <div class="disco-overlay">
+                    <h4>I Wish You Love (Studio Session)</h4>
+                    <p>Listen Now ↗</p>
+                </div>
+            </a>
+            
+            <!-- 空白帶框線的格子 -->
+            <div class="disco-item"></div>
+            <div class="disco-item"></div>
+            <div class="disco-item"></div>
+            
+        </div>
+    </section>
+
+    <!-- 2. Performances 區塊 -->
+    <section id="performances">
+        <h2 class="section-title">02 / Performances</h2>
+        <div class="grid-container performances-grid">
+            <div class="perf-col">
+                <h3>UPCOMING</h3>
+                <ul class="perf-list">
+                    <li><span><strong>中國醫藥大學附設醫院多功能廳，台中</strong><br>《健康星球的綠色任務：尋找消失的彩虹》親子劇場</span> <span>2026.08</span></li>
+                    <li><span><strong>新化音樂廳，台南</strong><br>《南都追想許石音樂劇》音樂劇演出</span> <span>2026.09</span></li>
+                    <li><span><strong>新竹市文化局演藝廳音樂廳，新竹</strong><br>《小美人魚之雙海奇緣》音樂劇演出</span> <span>2026.09</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Videos 區塊 (已置換為 YouTube iframe，順序更新) -->
+    <section id="videos">
+        <h2 class="section-title">03 / Videos</h2>
+        <div class="grid-container video-grid">
+            <!-- 1. 主打大影片 (佔據 2x2 空間) -->
+            <div class="video-item main">
+                <iframe src="https://www.youtube.com/embed/D3CHk3Jq5UM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- 2. 小影片 1 -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/A7zqb--flts" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- 3. 小影片 2 -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/HQNGrYriRaQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- 4. 小影片 3 -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/Ieky_rLDgu8?start=47" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- 5. 小影片 4 -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/q2C6RQFvnuA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- 6. 小影片 5 -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/CdVJHbwDmiw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- 7. 小影片 6 -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/mgRVsEiMlfc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <!-- 8. 小影片 7 -->
+            <div class="video-item">
+                <iframe src="https://www.youtube.com/embed/ZCFI7cJgs7A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <!-- 為了補滿網格，補上最後 1 個空白帶框線的格子 -->
+            <div class="video-item"></div>
+        </div>
+    </section>
+
+    <!-- 4. CV 區塊 -->
+    <section id="cv">
+        <h2 class="section-title">04 / Curriculum Vitae</h2>
+        <div class="cv-section">
+            <div class="cv-container">
+                <div>
+                    <!-- CV 個人照 -->
+                    <img src="CVH.jpg" class="cv-photo" alt="Portrait">
+                </div>
+                <div class="cv-text">
+                    <h2>林鼎強</h2>
+                    <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem;">歌手｜演員</p>
+                    
+                    <!-- 移至此處的超連結 -->
+                    <a href="https://drive.google.com/file/d/1bk-Y47VRf-ipqIlmvUiWJyDVbDD955FM/view?usp=share_link" target="_blank" style="display: inline-block; margin-bottom: 1.5rem; color: var(--text-color); font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">完整CV與過往演出</a>
+                    
+                    <p>男高音林鼎強，擁有東海大學表演藝術碩士學位，主修表演、副修聲樂。歌唱起源自大學時的音樂劇通識課程。他的聲音充滿溫度與張力，於2022與2024年兩度入選臺中國家歌劇院《NTT×勇源 - 音樂劇線上：新起之秀》，獲多位業內專家指導，並曾遠赴義大利 Brancaleoni 音樂節進修登台演出。</p>
+                    
+                    <p>目前林鼎強為謎思星球劇團歌手、東海大學流行歌唱研習社指導老師。他的演出風格多元，穿梭於音樂劇、歌劇、爵士樂、親子劇場與阿卡貝拉之間。從臺中國家歌劇院、臺北表演藝術中心到誠品表演廳，從正式的表藝場館乃至充滿歷史底蘊的古蹟，或是氣氛微醺的餐酒館，都能尋獲他的演出足跡。</p>
+                    
+                    <p>在深耕舞台表演之餘，林鼎強亦專注於錄混音工程。他與爵士跨界鋼琴家 Ivan 曾偉建灌錄發行多首爵士經典曲目；2025年末，與 Ivan、林莉豐、林友諒、劉南廷攜手發行聖誕EP《Lights, Music, Carols!》。持續致力於各種以聲音為核心的跨域合作。</p>
+                    
+                    <h4>教育背景</h4>
+                    <p>東海大學表演藝術與創作碩士學位學程<br>東海大學音樂學系（聲樂副修）<br>東海大學歷史學系</p>
+                    
+                    <h4>Contact</h4>
+                    <p>
+                        <a href="mailto:s991359@gmail.com" style="color: var(--text-color); text-decoration: none;">s991359@gmail.com</a><br>
+                        <a href="https://www.instagram.com/lindingchiang/" target="_blank" style="color: var(--text-color); text-decoration: underline; text-underline-offset: 4px;">Instagram</a><br>
+                        <a href="https://www.facebook.com/lin.ding.chiang" target="_blank" style="color: var(--text-color); text-decoration: underline; text-underline-offset: 4px;">Facebook</a>
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 林鼎強. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
