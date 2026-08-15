@@ -187,6 +187,30 @@
             border-bottom: none;
         }
 
+        /* --- 修改：Gallery 區塊樣式為 4 欄網格 (為了排滿 8 張圖) --- */
+        .gallery-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .gallery-item {
+            background-color: var(--bg-color);
+            aspect-ratio: 1 / 1; /* 保持正方形 Tile */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        /* -------------------------------------- */
+
         /* 3. 影片區塊 (3欄網格) */
         .video-grid {
             grid-template-columns: repeat(3, 1fr);
@@ -214,6 +238,9 @@
             height: 100%;
             border: none;
         }
+
+        /* 手機橫向滑動邏輯 (如果你還是想保留影片的橫向滑動，這裡留著，如果想用 Grid 就照舊) */
+        /* 為了配合你的要求，我先維持你給我的原始碼狀態，也就是純 Grid 排版 */
 
         /* 4. CV 區塊 */
         .cv-section {
@@ -270,6 +297,10 @@
         @media (max-width: 768px) {
             .discography-grid { grid-template-columns: repeat(2, 1fr); }
             .performances-grid { grid-template-columns: 1fr; }
+            
+            /* Gallery 在手機上變成 2 欄，維持美美的 Tile (2x4) */
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            
             .video-grid { grid-template-columns: 1fr; }
             .video-item.main { grid-column: span 1; grid-row: span 1; }
             .cv-container { grid-template-columns: 1fr; gap: 2rem; }
@@ -285,6 +316,7 @@
         <div class="nav-links">
             <a href="#discography">Discography</a>
             <a href="#performances">Performances</a>
+            <a href="#gallery">Gallery</a>
             <a href="#videos">Videos</a>
             <a href="#cv">CV</a>
         </div>
@@ -366,9 +398,41 @@
         </div>
     </section>
 
+    <!-- 新增：Gallery 區塊 (8格) -->
+    <section id="gallery">
+        <h2 class="section-title">03 / Gallery</h2>
+        <div class="grid-container gallery-grid">
+            <div class="gallery-item">
+                <img src="G1.jpg" alt="Gallery Image 1">
+            </div>
+            <div class="gallery-item">
+                <img src="G2.jpg" alt="Gallery Image 2">
+            </div>
+            <div class="gallery-item">
+                <img src="G3.jpg" alt="Gallery Image 3">
+            </div>
+            <div class="gallery-item">
+                <img src="G4.jpg" alt="Gallery Image 4">
+            </div>
+            <div class="gallery-item">
+                <img src="G5.jpg" alt="Gallery Image 5">
+            </div>
+            <div class="gallery-item">
+                <img src="G6.jpg" alt="Gallery Image 6">
+            </div>
+            <div class="gallery-item">
+                <img src="G7.jpg" alt="Gallery Image 7">
+            </div>
+            <div class="gallery-item">
+                <img src="G8.jpg" alt="Gallery Image 8">
+            </div>
+        </div>
+    </section>
+
     <!-- 3. Videos 區塊 (已置換為 YouTube iframe，順序更新) -->
+    <!-- 標題編號順延為 04 -->
     <section id="videos">
-        <h2 class="section-title">03 / Videos</h2>
+        <h2 class="section-title">04 / Videos</h2>
         <div class="grid-container video-grid">
             <!-- 1. 主打大影片 (佔據 2x2 空間) -->
             <div class="video-item main">
@@ -416,8 +480,9 @@
     </section>
 
     <!-- 4. CV 區塊 -->
+    <!-- 標題編號順延為 05 -->
     <section id="cv">
-        <h2 class="section-title">04 / Curriculum Vitae</h2>
+        <h2 class="section-title">05 / Curriculum Vitae</h2>
         <div class="cv-section">
             <div class="cv-container">
                 <div>
