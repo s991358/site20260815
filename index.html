@@ -240,9 +240,6 @@
             border: none;
         }
 
-        /* 手機橫向滑動邏輯 (如果你還是想保留影片的橫向滑動，這裡留著，如果想用 Grid 就照舊) */
-        /* 為了配合你的要求，我先維持你給我的原始碼狀態，也就是純 Grid 排版 */
-
         /* 4. CV 區塊 */
         .cv-section {
             background-color: var(--bg-color);
@@ -294,7 +291,14 @@
             letter-spacing: 1px;
         }
 
-        /* RWD 手機版設定 */
+        /* --- 新增：當螢幕寬度 <= 1024px (包含 iPad 直向) 時，隱藏副標題 --- */
+        @media (max-width: 1024px) {
+            .logo .sub-title {
+                display: none;
+            }
+        }
+
+        /* RWD 手機版設定 (維持原樣) */
         @media (max-width: 768px) {
             .discography-grid { grid-template-columns: repeat(2, 1fr); }
             .performances-grid { grid-template-columns: 1fr; }
@@ -313,7 +317,8 @@
 
     <!-- 導覽列 -->
     <nav>
-        <div class="logo">林鼎強｜跨界歌手｜劇場演員｜</div>
+        <!-- 這裡把副標題用 span 標籤包起來 -->
+        <div class="logo">林鼎強 <span class="sub-title">｜跨界歌手｜劇場演員</span></div>
         <div class="nav-links">
             <a href="#cv">CV</a>
             <a href="#discography">Discography</a>
