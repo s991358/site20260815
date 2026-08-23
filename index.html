@@ -298,7 +298,7 @@
             }
         }
 
-        /* RWD 手機版設定 (維持原樣) */
+        /* RWD 手機與平板直向的排版設定 (保留網格變化，但不再於 768px 隱藏選單) */
         @media (max-width: 768px) {
             .discography-grid { grid-template-columns: repeat(2, 1fr); }
             .performances-grid { grid-template-columns: 1fr; }
@@ -309,6 +309,10 @@
             .video-grid { grid-template-columns: 1fr; }
             .video-item.main { grid-column: span 1; grid-row: span 1; }
             .cv-container { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        /* --- 新增：只有在真正的窄螢幕手機 (550px 以下) 才隱藏右側選單 --- */
+        @media (max-width: 550px) {
             .nav-links { display: none; }
         }
     </style>
