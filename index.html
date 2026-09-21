@@ -95,16 +95,15 @@
             justify-content: center;
         }
 
-                .hero video {
+        .hero video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 加入這行：確保影片在任何螢幕比例下都會完美填滿、自動裁切 */
+            object-fit: cover; /* 確保影片在任何螢幕比例下都會完美填滿、自動裁切 */
             z-index: 1;
         }
-
 
         /* 利用 CSS Grid 與背景色實作「細黑線分割」的完美格線 */
         .grid-container {
@@ -133,12 +132,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* 移除灰階濾鏡，讓圖片一開始就是彩色的 */
-            transition: transform 0.5s ease; /* 僅保留放大特效 */
+            transition: transform 0.5s ease;
         }
 
         .disco-item:hover img {
-            transform: scale(1.05); /* 滑鼠懸停時微微放大 */
+            transform: scale(1.05);
         }
 
         .disco-overlay {
@@ -188,14 +186,14 @@
             border-bottom: none;
         }
 
-        /* --- 修改：Gallery 區塊樣式為 4 欄網格 (為了排滿 8 張圖) --- */
+        /* Gallery 區塊樣式為 4 欄網格 */
         .gallery-grid {
             grid-template-columns: repeat(4, 1fr);
         }
 
         .gallery-item {
             background-color: var(--bg-color);
-            aspect-ratio: 1 / 1; /* 保持正方形 Tile */
+            aspect-ratio: 1 / 1;
             position: relative;
             overflow: hidden;
         }
@@ -210,7 +208,6 @@
         .gallery-item:hover img {
             transform: scale(1.05);
         }
-        /* -------------------------------------- */
 
         /* 3. 影片區塊 (3欄網格) */
         .video-grid {
@@ -225,12 +222,10 @@
         }
 
         .video-item.main {
-            /* 主打影片：跨越 2 欄 2 列 */
             grid-column: span 2;
             grid-row: span 2;
         }
 
-        /* YouTube iframe 的滿版設定 */
         .video-item iframe {
             position: absolute;
             top: 0;
@@ -291,27 +286,24 @@
             letter-spacing: 1px;
         }
 
-        /* --- 新增：當螢幕寬度 <= 1024px (包含 iPad 直向) 時，隱藏副標題 --- */
+        /* 當螢幕寬度 <= 1024px (包含 iPad 直向) 時，隱藏副標題 */
         @media (max-width: 1024px) {
             .logo .sub-title {
                 display: none;
             }
         }
 
-        /* RWD 手機與平板直向的排版設定 (保留網格變化，但不再於 768px 隱藏選單) */
+        /* RWD 手機與平板直向的排版設定 */
         @media (max-width: 768px) {
             .discography-grid { grid-template-columns: repeat(2, 1fr); }
             .performances-grid { grid-template-columns: 1fr; }
-            
-            /* Gallery 在手機上變成 2 欄，維持美美的 Tile (2x4) */
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            
             .video-grid { grid-template-columns: 1fr; }
             .video-item.main { grid-column: span 1; grid-row: span 1; }
             .cv-container { grid-template-columns: 1fr; gap: 2rem; }
         }
 
-        /* --- 新增：只有在真正的窄螢幕手機 (550px 以下) 才隱藏右側選單 --- */
+        /* 窄螢幕手機 (550px 以下) 隱藏右側選單 */
         @media (max-width: 550px) {
             .nav-links { display: none; }
         }
@@ -321,7 +313,6 @@
 
     <!-- 導覽列 -->
     <nav>
-        <!-- 這裡把副標題用 span 標籤包起來 -->
         <div class="logo">林鼎強 <span class="sub-title">｜跨界歌手｜劇場演員</span></div>
         <div class="nav-links">
             <a href="#cv">CV</a>
@@ -332,13 +323,12 @@
         </div>
     </nav>
 
-    <!-- 1. Hero 大圖 / 無聲影片 (移除文字方塊) -->
-<header class="hero">
-    <!-- 加入 preload="auto" 並確保順序：mp4 在前，或分開不同副檔名 -->
-    <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="hero-fallback.jpg">
-        <source src="head.mp4" type="video/mp4">
-    </video>
-</header>
+    <!-- 1. Hero 大圖 / 無聲影片 -->
+    <header class="hero">
+        <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="hero-fallback.jpg">
+            <source src="head.mp4" type="video/mp4">
+        </video>
+    </header>
 
     <!-- 2. CV 區塊 -->
     <section id="cv">
@@ -353,7 +343,6 @@
                     <h2>林鼎強</h2>
                     <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem;">歌手｜演員</p>
                     
-                    <!-- 移至此處的超連結 -->
                     <a href="https://drive.google.com/file/d/1bk-Y47VRf-ipqIlmvUiWJyDVbDD955FM/view?usp=share_link" target="_blank" style="display: inline-block; margin-bottom: 1.5rem; color: var(--text-color); font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">完整CV與過往演出</a>
                     
                     <p>男高音林鼎強，擁有東海大學表演藝術碩士學位，主修表演、副修聲樂。歌唱起源自大學時的音樂劇通識課程，於2022與2024年兩度入選臺中國家歌劇院《NTT×勇源 - 音樂劇線上：新起之秀》，獲多位業內專家指導，並曾遠赴義大利 Brancaleoni 音樂節進修登台演出。</p>
@@ -435,11 +424,13 @@
         <h2 class="section-title">03 / Performances</h2>
         <div class="grid-container performances-grid">
             <div class="perf-col">
-                <h3>UPCOMING</h3>
+                <h3>RECENT PERFORMANCES</h3>
                 <ul class="perf-list">
-                    <li><span><strong>中醫大附醫多功能廳，台中</strong><br>《健康星球的綠色任務：尋找消失的彩虹》親子劇場</span> <span>2026.08</span></li>
-                    <li><span><strong>新化音樂廳，台南</strong><br>《留聲府城：許石音樂劇三部曲》音樂劇演出</span> <span>2026.09</span></li>
                     <li><span><strong>新竹市文化局演藝廳音樂廳，新竹</strong><br>《小美人魚之雙海奇緣》音樂劇演出</span> <span>2026.09</span></li>
+                    <li><span><strong>新化音樂廳，台南</strong><br>《留聲府城：許石音樂劇三部曲》音樂劇演出</span> <span>2026.09</span></li>
+                    <li><span><strong>中醫大附醫多功能廳，台中</strong><br>《健康星球的綠色任務：尋找消失的彩虹》親子劇場</span> <span>2026.08</span></li>
+                    <li><span><strong>台北行天宮演藝廳</strong><br>《莫札特找靈感》親子劇場</span> <span>2026.08</span></li>
+                    <li><span><strong>臺中國家歌劇院 中劇院</strong><br>海闊天空 飛翔之旅 音樂會獨唱</span> <span>2026.08</span></li>
                 </ul>
             </div>
         </div>
@@ -520,7 +511,7 @@
                 <iframe src="https://www.youtube.com/embed/ZCFI7cJgs7A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <!-- 為了補滿網格，補上最後 1 個空白帶框線的格子 -->
+            <!-- 空白帶框線的格子 -->
             <div class="video-item"></div>
         </div>
     </section>
