@@ -209,7 +209,7 @@
             transform: scale(1.05);
         }
 
-        /* 3. 影片區塊 (3欄網格) */
+        /* 3. 影片區塊 (3欄網格 + Lite YouTube 樣式) */
         .video-grid {
             grid-template-columns: repeat(3, 1fr);
         }
@@ -221,9 +221,60 @@
             overflow: hidden;
         }
 
+        .video-item[data-video-id] {
+            cursor: pointer;
+            background-color: #000000;
+        }
+
         .video-item.main {
             grid-column: span 2;
             grid-row: span 2;
+        }
+
+        .video-item img.video-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease, transform 0.5s ease;
+        }
+
+        .video-item[data-video-id]:hover img.video-thumb {
+            opacity: 0.85;
+            transform: scale(1.03);
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 54px;
+            height: 54px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .play-btn::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 14px;
+            border-color: transparent transparent transparent #ffffff;
+            margin-left: 3px;
+        }
+
+        .video-item[data-video-id]:hover .play-btn {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: #000000;
         }
 
         .video-item iframe {
@@ -323,9 +374,9 @@
         </div>
     </nav>
 
-    <!-- 1. Hero 大圖 / 無聲影片 (加上 fetchpriority="high" 優先載入) -->
+    <!-- 1. Hero 大圖 / 無聲影片 -->
     <header class="hero">
-        <video autoplay loop muted playsinline webkit-playsinline preload="auto" fetchpriority="high" poster="hero-fallback.jpg">
+        <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="hero-fallback.jpg">
             <source src="head.mp4" type="video/mp4">
         </video>
     </header>
@@ -436,79 +487,87 @@
         </div>
     </section>
 
-    <!-- 5. Gallery 區塊 (8格加上 loading="lazy") -->
+    <!-- 5. Gallery 區塊 (8格) -->
     <section id="gallery">
         <h2 class="section-title">04 / Gallery</h2>
         <div class="grid-container gallery-grid">
             <div class="gallery-item">
-                <img src="G1.jpg" alt="Gallery Image 1" loading="lazy">
+                <img src="G1.jpg" alt="Gallery Image 1">
             </div>
             <div class="gallery-item">
-                <img src="G2.jpg" alt="Gallery Image 2" loading="lazy">
+                <img src="G2.jpg" alt="Gallery Image 2">
             </div>
             <div class="gallery-item">
-                <img src="G3.jpg" alt="Gallery Image 3" loading="lazy">
+                <img src="G3.jpg" alt="Gallery Image 3">
             </div>
             <div class="gallery-item">
-                <img src="G4.jpg" alt="Gallery Image 4" loading="lazy">
+                <img src="G4.jpg" alt="Gallery Image 4">
             </div>
             <div class="gallery-item">
-                <img src="G5.jpg" alt="Gallery Image 5" loading="lazy">
+                <img src="G5.jpg" alt="Gallery Image 5">
             </div>
             <div class="gallery-item">
-                <img src="G6.jpg" alt="Gallery Image 6" loading="lazy">
+                <img src="G6.jpg" alt="Gallery Image 6">
             </div>
             <div class="gallery-item">
-                <img src="G7.jpg" alt="Gallery Image 7" loading="lazy">
+                <img src="G7.jpg" alt="Gallery Image 7">
             </div>
             <div class="gallery-item">
-                <img src="G8.jpg" alt="Gallery Image 8" loading="lazy">
+                <img src="G8.jpg" alt="Gallery Image 8">
             </div>
         </div>
     </section>
 
-    <!-- 6. Videos 區塊 -->
+    <!-- 6. Videos 區塊 (Lite 輕量版) -->
     <section id="videos">
         <h2 class="section-title">05 / Videos</h2>
         <div class="grid-container video-grid">
             <!-- 1. 主打大影片 (佔據 2x2 空間) -->
-            <div class="video-item main">
-                <iframe src="https://www.youtube.com/embed/D3CHk3Jq5UM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-item main" data-video-id="D3CHk3Jq5UM">
+                <img class="video-thumb" src="https://img.youtube.com/vi/D3CHk3Jq5UM/hqdefault.jpg" alt="Video 1">
+                <div class="play-btn"></div>
             </div>
             
             <!-- 2. 小影片 1 -->
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/A7zqb--flts" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-item" data-video-id="A7zqb--flts">
+                <img class="video-thumb" src="https://img.youtube.com/vi/A7zqb--flts/hqdefault.jpg" alt="Video 2">
+                <div class="play-btn"></div>
             </div>
             
             <!-- 3. 小影片 2 -->
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/HQNGrYriRaQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-item" data-video-id="HQNGrYriRaQ">
+                <img class="video-thumb" src="https://img.youtube.com/vi/HQNGrYriRaQ/hqdefault.jpg" alt="Video 3">
+                <div class="play-btn"></div>
             </div>
             
-            <!-- 4. 小影片 3 -->
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/Ieky_rLDgu8?start=47" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- 4. 小影片 3 (從 47 秒開始) -->
+            <div class="video-item" data-video-id="Ieky_rLDgu8" data-start="47">
+                <img class="video-thumb" src="https://img.youtube.com/vi/Ieky_rLDgu8/hqdefault.jpg" alt="Video 4">
+                <div class="play-btn"></div>
             </div>
             
             <!-- 5. 小影片 4 -->
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/q2C6RQFvnuA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-item" data-video-id="q2C6RQFvnuA">
+                <img class="video-thumb" src="https://img.youtube.com/vi/q2C6RQFvnuA/hqdefault.jpg" alt="Video 5">
+                <div class="play-btn"></div>
             </div>
             
             <!-- 6. 小影片 5 -->
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/CdVJHbwDmiw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-item" data-video-id="CdVJHbwDmiw">
+                <img class="video-thumb" src="https://img.youtube.com/vi/CdVJHbwDmiw/hqdefault.jpg" alt="Video 6">
+                <div class="play-btn"></div>
             </div>
             
             <!-- 7. 小影片 6 -->
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/mgRVsEiMlfc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-item" data-video-id="mgRVsEiMlfc">
+                <img class="video-thumb" src="https://img.youtube.com/vi/mgRVsEiMlfc/hqdefault.jpg" alt="Video 7">
+                <div class="play-btn"></div>
             </div>
 
             <!-- 8. 小影片 7 -->
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/ZCFI7cJgs7A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-item" data-video-id="ZCFI7cJgs7A">
+                <img class="video-thumb" src="https://img.youtube.com/vi/ZCFI7cJgs7A/hqdefault.jpg" alt="Video 8">
+                <div class="play-btn"></div>
             </div>
 
             <!-- 空白帶框線的格子 -->
@@ -519,6 +578,20 @@
     <footer>
         © 2026 林鼎強. All Rights Reserved.
     </footer>
+
+    <!-- Lite YouTube 點擊載入腳本 -->
+    <script>
+        document.querySelectorAll('.video-item[data-video-id]').forEach(item => {
+            item.addEventListener('click', function() {
+                const videoId = this.getAttribute('data-video-id');
+                const start = this.getAttribute('data-start');
+                let src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                if (start) src += `&start=${start}`;
+
+                this.innerHTML = `<iframe src="${src}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            }, { once: true });
+        });
+    </script>
 
 </body>
 </html>
