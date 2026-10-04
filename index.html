@@ -323,9 +323,9 @@
         </div>
     </nav>
 
-    <!-- 1. Hero 大圖 / 無聲影片 -->
+    <!-- 1. Hero 大圖 / 無聲影片 (加上 fetchpriority="high" 優先載入) -->
     <header class="hero">
-        <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="hero-fallback.jpg">
+        <video autoplay loop muted playsinline webkit-playsinline preload="auto" fetchpriority="high" poster="hero-fallback.jpg">
             <source src="head.mp4" type="video/mp4">
         </video>
     </header>
@@ -336,8 +336,8 @@
         <div class="cv-section">
             <div class="cv-container">
                 <div>
-                    <!-- CV 個人照 -->
-                    <img src="CVH.jpg" class="cv-photo" alt="Portrait">
+                   <!-- CV 個人照 -->
+<img src="CVH.jpg" class="cv-photo" alt="Portrait" loading="lazy">
                 </div>
                 <div class="cv-text">
                     <h2>林鼎強</h2>
@@ -436,33 +436,33 @@
         </div>
     </section>
 
-    <!-- 5. Gallery 區塊 (8格) -->
+    <!-- 5. Gallery 區塊 (8格加上 loading="lazy") -->
     <section id="gallery">
         <h2 class="section-title">04 / Gallery</h2>
         <div class="grid-container gallery-grid">
             <div class="gallery-item">
-                <img src="G1.jpg" alt="Gallery Image 1">
+                <img src="G1.jpg" alt="Gallery Image 1" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="G2.jpg" alt="Gallery Image 2">
+                <img src="G2.jpg" alt="Gallery Image 2" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="G3.jpg" alt="Gallery Image 3">
+                <img src="G3.jpg" alt="Gallery Image 3" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="G4.jpg" alt="Gallery Image 4">
+                <img src="G4.jpg" alt="Gallery Image 4" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="G5.jpg" alt="Gallery Image 5">
+                <img src="G5.jpg" alt="Gallery Image 5" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="G6.jpg" alt="Gallery Image 6">
+                <img src="G6.jpg" alt="Gallery Image 6" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="G7.jpg" alt="Gallery Image 7">
+                <img src="G7.jpg" alt="Gallery Image 7" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="G8.jpg" alt="Gallery Image 8">
+                <img src="G8.jpg" alt="Gallery Image 8" loading="lazy">
             </div>
         </div>
     </section>
