@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>林鼎強｜跨界歌手｜劇場演員</title>
+    <meta name="description" content="男高音林鼎強個人官方網站。活躍於音樂劇、歌劇、爵士樂、親子劇場與阿卡貝拉之跨界歌手與劇場演員，提供最新演出歷程、音樂作品試聽與影音精選。">
+
+    <!-- 預先載入首頁主視覺圖，確保行動端秒開 -->
+    <link rel="preload" as="image" href="hero-fallback.jpg" fetchpriority="high">
+
     <!-- 引入 Google 字體：Inter (現代極簡無襯線字體) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +37,20 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            /* 確保全站文字預設可正常反白選取與複製 */
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        /* ==========================================
+           媒體防盜鎖：鎖定所有圖片與影片（不鎖文字）
+           ========================================== */
+        img, video {
+            pointer-events: none;        /* 關鍵：讓滑鼠右鍵直接穿透媒體本體，抓不到檔案 */
+            -webkit-touch-callout: none; /* 禁止 iOS 手機長按彈出「儲存影像」選單 */
+            -webkit-user-drag: none;     /* 禁止拖曳圖片到桌面 */
+            user-select: none;           /* 禁止選取圖片 */
+            -webkit-user-select: none;
         }
 
         /* 導覽列 (Sticky 黏在頂部，帶黑線) */
@@ -93,6 +112,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        /* 首頁透明防護罩：阻絕任何針對背景影片的右鍵探測 */
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
         }
 
         .hero video {
@@ -307,6 +334,7 @@
             aspect-ratio: 3 / 4;
             object-fit: cover;
             border: 1px solid var(--border-color);
+            display: block;
         }
 
         .cv-text h2 {
@@ -374,9 +402,9 @@
         </div>
     </nav>
 
-    <!-- 1. Hero 大圖 / 無聲影片 -->
+    <!-- 1. Hero 大圖 / 無聲影片 (加上 nodownload 與禁子母畫面) -->
     <header class="hero">
-        <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="hero-fallback.jpg">
+        <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="hero-fallback.jpg" controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;">
             <source src="head.mp4" type="video/mp4">
         </video>
     </header>
@@ -386,15 +414,15 @@
         <h2 class="section-title">01 / Curriculum Vitae</h2>
         <div class="cv-section">
             <div class="cv-container">
-                <div>
+                <div class="cv-photo-wrap">
                     <!-- CV 個人照 -->
-                    <img src="CVH.jpg" class="cv-photo" alt="Portrait">
+                    <img src="CVH.jpg" class="cv-photo" alt="林鼎強個人肖像照" draggable="false">
                 </div>
                 <div class="cv-text">
                     <h2>林鼎強</h2>
                     <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem;">歌手｜演員</p>
                     
-                    <a href="https://drive.google.com/file/d/1bk-Y47VRf-ipqIlmvUiWJyDVbDD955FM/view?usp=share_link" target="_blank" style="display: inline-block; margin-bottom: 1.5rem; color: var(--text-color); font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">完整經歷與過往演出 ↬ Full CV</a>
+                    <a href="https://drive.google.com/file/d/1bk-Y47VRf-ipqIlmvUiWJyDVbDD955FM/view?usp=share_link" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-bottom: 1.5rem; color: var(--text-color); font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">完整經歷與過往演出 ↬ Full CV</a>
                     
                     <p>男高音林鼎強，擁有東海大學表演藝術碩士學位，主修表演、副修聲樂。劇場啟蒙自東海大學之音樂劇通識課程。於2022與2024年兩度入選臺中國家歌劇院《NTT×勇源 - 音樂劇線上：新起之秀》，獲多位業內專家指導，並曾遠赴義大利 Brancaleoni 音樂節進修登台演出。</p>
                     
@@ -408,8 +436,8 @@
                     <h4>Contact</h4>
                     <p>
                         <a href="mailto:s991359@gmail.com" style="color: var(--text-color); text-decoration: none;">s991359@gmail.com</a><br>
-                        <a href="https://www.instagram.com/lindingchiang/" target="_blank" style="color: var(--text-color); text-decoration: underline; text-underline-offset: 4px;">Instagram</a><br>
-                        <a href="https://www.facebook.com/lin.ding.chiang" target="_blank" style="color: var(--text-color); text-decoration: underline; text-underline-offset: 4px;">Facebook</a>
+                        <a href="https://www.instagram.com/lindingchiang/" target="_blank" rel="noopener noreferrer" style="color: var(--text-color); text-decoration: underline; text-underline-offset: 4px;">Instagram</a><br>
+                        <a href="https://www.facebook.com/lin.ding.chiang" target="_blank" rel="noopener noreferrer" style="color: var(--text-color); text-decoration: underline; text-underline-offset: 4px;">Facebook</a>
                     </p>
                     
                 </div>
@@ -422,40 +450,40 @@
         <h2 class="section-title">02 / Discography</h2>
         <div class="grid-container discography-grid">
             
-            <a href="https://ffm.to/canyoufeelthelovetonight" class="disco-item" target="_blank">
-                <img src="AL1.webp" alt="Album Cover 1">
+            <a href="https://ffm.to/canyoufeelthelovetonight" class="disco-item" target="_blank" rel="noopener noreferrer">
+                <img src="AL1.webp" alt="Album Cover 1" draggable="false">
                 <div class="disco-overlay">
                     <h4>Can You Feel the Love Tonight (Live)</h4>
                     <p>Listen Now ↗</p>
                 </div>
             </a>
             
-            <a href="https://ffm.to/doiloveyou" class="disco-item" target="_blank">
-                <img src="AL2.webp" alt="Album Cover 2">
+            <a href="https://ffm.to/doiloveyou" class="disco-item" target="_blank" rel="noopener noreferrer">
+                <img src="AL2.webp" alt="Album Cover 2" draggable="false">
                 <div class="disco-overlay">
                     <h4>Do I Love You</h4>
                     <p>Listen Now ↗</p>
                 </div>
             </a>
             
-            <a href="https://ffm.to/LightsMusicCarols" class="disco-item" target="_blank">
-                <img src="AL3.webp" alt="Album Cover 3">
+            <a href="https://ffm.to/LightsMusicCarols" class="disco-item" target="_blank" rel="noopener noreferrer">
+                <img src="AL3.webp" alt="Album Cover 3" draggable="false">
                 <div class="disco-overlay">
                     <h4>Lights, Music, Carols!</h4>
                     <p>Listen Now ↗</p>
                 </div>
             </a>
             
-            <a href="https://ffm.to/almost-like-being-in-love" class="disco-item" target="_blank">
-                <img src="AL4.webp" alt="Album Cover 4">
+            <a href="https://ffm.to/almost-like-being-in-love" class="disco-item" target="_blank" rel="noopener noreferrer">
+                <img src="AL4.webp" alt="Album Cover 4" draggable="false">
                 <div class="disco-overlay">
                     <h4>Almost Like Being in Love</h4>
                     <p>Listen Now ↗</p>
                 </div>
             </a>
             
-            <a href="https://ffm.to/i-wish-you-love" class="disco-item" target="_blank">
-                <img src="AL5.webp" alt="Album Cover 5">
+            <a href="https://ffm.to/i-wish-you-love" class="disco-item" target="_blank" rel="noopener noreferrer">
+                <img src="AL5.webp" alt="Album Cover 5" draggable="false">
                 <div class="disco-overlay">
                     <h4>I Wish You Love (Studio Session)</h4>
                     <p>Listen Now ↗</p>
@@ -492,28 +520,28 @@
         <h2 class="section-title">04 / Gallery</h2>
         <div class="grid-container gallery-grid">
             <div class="gallery-item">
-                <img src="G1.jpg" alt="Gallery Image 1">
+                <img src="G1.jpg" alt="Gallery Image 1" draggable="false">
             </div>
             <div class="gallery-item">
-                <img src="G2.jpg" alt="Gallery Image 2">
+                <img src="G2.jpg" alt="Gallery Image 2" draggable="false">
             </div>
             <div class="gallery-item">
-                <img src="G3.jpg" alt="Gallery Image 3">
+                <img src="G3.jpg" alt="Gallery Image 3" draggable="false">
             </div>
             <div class="gallery-item">
-                <img src="G4.jpg" alt="Gallery Image 4">
+                <img src="G4.jpg" alt="Gallery Image 4" draggable="false">
             </div>
             <div class="gallery-item">
-                <img src="G5.jpg" alt="Gallery Image 5">
+                <img src="G5.jpg" alt="Gallery Image 5" draggable="false">
             </div>
             <div class="gallery-item">
-                <img src="G6.jpg" alt="Gallery Image 6">
+                <img src="G6.jpg" alt="Gallery Image 6" draggable="false">
             </div>
             <div class="gallery-item">
-                <img src="G7.jpg" alt="Gallery Image 7">
+                <img src="G7.jpg" alt="Gallery Image 7" draggable="false">
             </div>
             <div class="gallery-item">
-                <img src="G8.jpg" alt="Gallery Image 8">
+                <img src="G8.jpg" alt="Gallery Image 8" draggable="false">
             </div>
         </div>
     </section>
@@ -524,49 +552,49 @@
         <div class="grid-container video-grid">
             <!-- 1. 主打大影片 (佔據 2x2 空間) -->
             <div class="video-item main" data-video-id="D3CHk3Jq5UM">
-                <img class="video-thumb" src="https://img.youtube.com/vi/D3CHk3Jq5UM/hqdefault.jpg" alt="Video 1">
+                <img class="video-thumb" src="https://img.youtube.com/vi/D3CHk3Jq5UM/hqdefault.jpg" alt="Video 1" draggable="false">
                 <div class="play-btn"></div>
             </div>
             
             <!-- 2. 小影片 1 -->
             <div class="video-item" data-video-id="A7zqb--flts">
-                <img class="video-thumb" src="https://img.youtube.com/vi/A7zqb--flts/hqdefault.jpg" alt="Video 2">
+                <img class="video-thumb" src="https://img.youtube.com/vi/A7zqb--flts/hqdefault.jpg" alt="Video 2" draggable="false">
                 <div class="play-btn"></div>
             </div>
             
             <!-- 3. 小影片 2 -->
             <div class="video-item" data-video-id="HQNGrYriRaQ">
-                <img class="video-thumb" src="https://img.youtube.com/vi/HQNGrYriRaQ/hqdefault.jpg" alt="Video 3">
+                <img class="video-thumb" src="https://img.youtube.com/vi/HQNGrYriRaQ/hqdefault.jpg" alt="Video 3" draggable="false">
                 <div class="play-btn"></div>
             </div>
             
             <!-- 4. 小影片 3 (從 47 秒開始) -->
             <div class="video-item" data-video-id="Ieky_rLDgu8" data-start="47">
-                <img class="video-thumb" src="https://img.youtube.com/vi/Ieky_rLDgu8/hqdefault.jpg" alt="Video 4">
+                <img class="video-thumb" src="https://img.youtube.com/vi/Ieky_rLDgu8/hqdefault.jpg" alt="Video 4" draggable="false">
                 <div class="play-btn"></div>
             </div>
             
             <!-- 5. 小影片 4 -->
             <div class="video-item" data-video-id="q2C6RQFvnuA">
-                <img class="video-thumb" src="https://img.youtube.com/vi/q2C6RQFvnuA/hqdefault.jpg" alt="Video 5">
+                <img class="video-thumb" src="https://img.youtube.com/vi/q2C6RQFvnuA/hqdefault.jpg" alt="Video 5" draggable="false">
                 <div class="play-btn"></div>
             </div>
             
             <!-- 6. 小影片 5 -->
             <div class="video-item" data-video-id="CdVJHbwDmiw">
-                <img class="video-thumb" src="https://img.youtube.com/vi/CdVJHbwDmiw/hqdefault.jpg" alt="Video 6">
+                <img class="video-thumb" src="https://img.youtube.com/vi/CdVJHbwDmiw/hqdefault.jpg" alt="Video 6" draggable="false">
                 <div class="play-btn"></div>
             </div>
             
             <!-- 7. 小影片 6 -->
             <div class="video-item" data-video-id="mgRVsEiMlfc">
-                <img class="video-thumb" src="https://img.youtube.com/vi/mgRVsEiMlfc/hqdefault.jpg" alt="Video 7">
+                <img class="video-thumb" src="https://img.youtube.com/vi/mgRVsEiMlfc/hqdefault.jpg" alt="Video 7" draggable="false">
                 <div class="play-btn"></div>
             </div>
 
             <!-- 8. 小影片 7 -->
             <div class="video-item" data-video-id="ZCFI7cJgs7A">
-                <img class="video-thumb" src="https://img.youtube.com/vi/ZCFI7cJgs7A/hqdefault.jpg" alt="Video 8">
+                <img class="video-thumb" src="https://img.youtube.com/vi/ZCFI7cJgs7A/hqdefault.jpg" alt="Video 8" draggable="false">
                 <div class="play-btn"></div>
             </div>
 
@@ -579,8 +607,9 @@
         © 2026 林鼎強. All Rights Reserved.
     </footer>
 
-    <!-- Lite YouTube 點擊載入腳本 -->
+    <!-- Lite YouTube 點擊載入腳本 + 媒體精準防右鍵腳本 -->
     <script>
+        // 1. Lite YouTube 點擊載入
         document.querySelectorAll('.video-item[data-video-id]').forEach(item => {
             item.addEventListener('click', function() {
                 const videoId = this.getAttribute('data-video-id');
@@ -590,6 +619,20 @@
 
                 this.innerHTML = `<iframe src="${src}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             }, { once: true });
+        });
+
+        // 2. 針對所有照片與影片容器攔截右鍵選單（不影響文字選取與複製）
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.closest('.hero, .gallery-item, .cv-photo-wrap, .disco-item, .video-item, img, video')) {
+                e.preventDefault();
+            }
+        });
+
+        // 3. 全面禁止拖曳媒體元件
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.closest('.hero, .gallery-item, .cv-photo-wrap, .disco-item, .video-item, img, video')) {
+                e.preventDefault();
+            }
         });
     </script>
 
