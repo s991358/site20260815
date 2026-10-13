@@ -6,7 +6,7 @@
     <title>林鼎強｜跨界歌手｜劇場演員</title>
     <meta name="description" content="男高音林鼎強個人官方網站。活躍於音樂劇、歌劇、爵士樂、親子劇場與阿卡貝拉之跨界歌手與劇場演員，提供演出行程、音樂作品與影音精選。">
    
-    <!-- 社群分享預覽卡片 (LINE, Facebook, Instagram) -->
+    <!-- 社群分享預覽卡片 -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lindingchiang.com/">
     <meta property="og:title" content="林鼎強 Ding Chiang Lin｜男高音・歌手・劇場演員">
@@ -20,6 +20,28 @@
     <meta name="twitter:description" content="男高音林鼎強個人官方網站。活躍於音樂劇、歌劇、爵士樂、親子劇場與阿卡貝拉之跨界歌手與劇場演員，提供演出行程、音樂作品與影音精選。">
     <meta name="twitter:image" content="https://lindingchiang.com/CVH.jpg">
 
+    <!-- 4. Google 結構化資料  -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "林鼎強",
+      "alternateName": "Ding Chiang Lin",
+      "url": "https://lindingchiang.com/",
+      "image": "https://lindingchiang.com/CVH.jpg",
+      "jobTitle": ["男高音", "歌手", "劇場演員"],
+      "description": "男高音、歌手與劇場演員。以人聲與跨域演出為核心，活躍於音樂劇、歌劇、爵士樂與劇場舞台。",
+      "sameAs": [
+        "https://www.instagram.com/lindingchiang/",
+        "https://www.facebook.com/lin.ding.chiang"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "東海大學"
+      }
+    }
+    </script>
+    
     <!-- 預先載入首頁主視覺圖，確保行動端秒開 -->
     <link rel="preload" as="image" href="hero-fallback.jpg" fetchpriority="high">
 
@@ -57,7 +79,7 @@
         }
 
         /* ==========================================
-           媒體防盜鎖：鎖定所有圖片與影片（不鎖文字）
+           鎖定所有圖片與影片（不鎖文字）
            ========================================== */
         img, video {
             pointer-events: none;        /* 關鍵：讓滑鼠右鍵直接穿透媒體本體，抓不到檔案 */
@@ -351,7 +373,7 @@
             display: block;
         }
 
-        .cv-text h2 {
+        .cv-text h1 {
             font-size: 2.5rem;
             font-weight: 300;
             margin-bottom: 1rem;
@@ -433,7 +455,7 @@
                     <img src="CVH.jpg" class="cv-photo" alt="林鼎強個人肖像照" draggable="false">
                 </div>
                 <div class="cv-text">
-                    <h2>林鼎強</h2>
+                    <h1>林鼎強</h1>
                     <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem;">歌手｜演員</p>
                     
                     <a href="https://drive.google.com/file/d/1bk-Y47VRf-ipqIlmvUiWJyDVbDD955FM/view?usp=share_link" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-bottom: 1.5rem; color: var(--text-color); font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">完整經歷與過往演出 ↬ Full CV</a>
