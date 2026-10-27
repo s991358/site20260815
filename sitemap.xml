@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://lindingchiang.com/</loc>
+    
+    <!-- 形象照 -->
+    <image:image>
+      <image:loc>https://lindingchiang.com/CVH.jpg</image:loc>
+      <image:title>男高音與劇場演員 林鼎強 個人形象照</image:title>
+    </image:image>
+
+    <!-- 5 張音樂作品封面 -->
+    <image:image>
+      <image:loc>https://lindingchiang.com/AL1.webp</image:loc>
+      <image:title>林鼎強 - Can You Feel the Love Tonight 單曲封面</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/AL2.webp</image:loc>
+      <image:title>林鼎強 - Do I Love You 單曲封面</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/AL3.webp</image:loc>
+      <image:title>林鼎強 - Lights, Music, Carols! 聖誕EP封面</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/AL4.webp</image:loc>
+      <image:title>林鼎強 - Almost Like Being in Love 封面</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/AL5.webp</image:loc>
+      <image:title>林鼎強 - I Wish You Love (Studio Session) 封面</image:title>
+    </image:image>
+
+    <!-- 8 張現場演出劇照 -->
+    <image:image>
+      <image:loc>https://lindingchiang.com/G1.jpg</image:loc>
+      <image:title>林鼎強 劇場演出劇照</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/G2.jpg</image:loc>
+      <image:title>林鼎強 音樂劇舞台演出劇照</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/G3.jpg</image:loc>
+      <image:title>男高音林鼎強 聲樂與音樂會現場演出</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/G4.jpg</image:loc>
+      <image:title>林鼎強 親子劇演出紀錄</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/G5.jpg</image:loc>
+      <image:title>林鼎強 靠岸 劇照</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/G6.jpg</image:loc>
+      <image:title>林鼎強 卡謬 圍城演出劇照</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/G7.jpg</image:loc>
+      <image:title>林鼎強 音樂會獨唱演出紀錄</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lindingchiang.com/G8.jpg</image:loc>
+      <image:title>林鼎強 音樂會照片</image:title>
+    </image:image>
+  </url>
+</urlset>
